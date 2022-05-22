@@ -17,6 +17,7 @@ import Blogs from './Pages/Blogs/Blogs';
 import Portfolio from './Pages/Portfolio/Portfolio';
 import SignUp from './Pages/Login/SignUp';
 import Login from './Pages/Login/Login';
+import Footer from './Pages/Shared/Footer';
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
         <Route path="/signup" element={<SignUp></SignUp>}></Route>
         <Route path="/login" element={<Login></Login>}></Route>
       </Routes>
+      <Footer></Footer>
       <ToastContainer />
     </div>
   );

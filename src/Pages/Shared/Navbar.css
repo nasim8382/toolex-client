@@ -26,10 +26,10 @@ element.style {
 }
 
 .menu :where(li) > :where(*:not(ul)) {
-    color: white;
+    /* color: white; */
 }
 
 .menu :where(li) > :where(*:not(ul)):hover {
-    color: #172B34;
-    background-color: #fdb819;
+    color: white;
+    background-color: #172B34;
 }

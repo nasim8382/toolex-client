@@ -4,7 +4,7 @@ import React from 'react';
 import { Link } from "react-router-dom";
 // import auth from "../../firebase.init";
 import './Navbar.css';
-import logo from '../../images/logo.png';
+import logo from '../../images/header_logo.png';
 // import userPhoto from '../../images/profile.jpg';
 // import blankUser from '../../images/blank_profile.jpg';
 
@@ -65,7 +65,7 @@ const Navbar = () => {
       );
 
     return (
-        <div className='bg-primary'>
+        <div className='bg-secondary'>
         <div className="navbar max-w-7xl mx-auto px-12">
         <div className="navbar-start">
           <div className="dropdown">
@@ -92,7 +92,7 @@ const Navbar = () => {
               {menuItems}
             </ul>
           </div>
-          <Link to="/home"><img className='h-10' src={logo} alt="" /></Link>
+          <Link to="/home"><img className='h-8' src={logo} alt="" /></Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal p-0">{menuItems}</ul>

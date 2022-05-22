@@ -10,10 +10,10 @@ const Dashboard = () => {
 
     return (
         <div className='max-w-7xl mx-auto px-12'>
-        <div className="drawer drawer-mobile mt-12">
+        <div className="drawer drawer-mobile mt-8">
             <input id="dashboard-sidebar" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content">
-                <h2 className='text-6xl text-center mt-6 font-bold text-purple-500'>Welcome to your Dashboard</h2>
+                <h2 className='text-3xl md:text-5xl text-center mt-3 font-bold text-lime-700'>Welcome to your Dashboard</h2>
                 <Outlet></Outlet>
             </div>
             <div className="drawer-side">
