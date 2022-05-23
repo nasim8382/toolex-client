@@ -6,7 +6,7 @@ import HorizontalLine from "../Shared/HorizontalLine";
 
 const BusinessSummary = () => {
   return (
-    <div className="max-w-7xl mx-auto px-12 mt-32">
+    <div className="max-w-7xl mx-auto px-12 mt-20 md:mt-32">
         <h1 className="text-primary text-3xl md:text-4xl lg:text-5xl font-bold">Business Summary</h1>
         <HorizontalLine></HorizontalLine>
       <div className="stats grid-flow-row md:grid-flow-col shadow w-full">

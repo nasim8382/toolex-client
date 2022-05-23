@@ -6,27 +6,9 @@
     width: 0%;
 }
 
-
-element.style {
-}
-.menu[class*=" p-"] li > *, .menu[class^="p-"] li > * {
-    border-radius: var(--rounded-btn, 0.5rem);
-}
-.menu-horizontal > :where(li:first-child) > :where(*:not(ul)) {
-    border-top-left-radius: inherit;
-    border-top-right-radius: unset;
-    border-bottom-right-radius: unset;
-    border-bottom-left-radius: inherit;
-}
-.menu > :where(li:first-child) > :where(:not(ul)) {
-    border-top-left-radius: inherit;
-    border-top-right-radius: inherit;
-    border-bottom-right-radius: unset;
-    border-bottom-left-radius: unset;
-}
-
 .menu :where(li) > :where(*:not(ul)) {
-    /* color: white; */
+    font-weight: 700;
+    font-size: 17px;
 }
 
 .menu :where(li) > :where(*:not(ul)):hover {

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
+import './Dashboard.css'
 // import { useAuthState } from 'react-firebase-hooks/auth';
 // import auth from '../../firebase.init';
 // import useAdmin from '../../hooks/useAdmin';
@@ -9,7 +10,7 @@ const Dashboard = () => {
     // const [admin] = useAdmin(user);
 
     return (
-        <div className='max-w-7xl mx-auto px-12'>
+        <div className='max-w-7xl mx-auto px-5 md:px-12'>
         <div className="drawer drawer-mobile mt-8">
             <input id="dashboard-sidebar" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content">
@@ -18,7 +19,7 @@ const Dashboard = () => {
             </div>
             <div className="drawer-side">
                 <label htmlFor="dashboard-sidebar" className="drawer-overlay"></label>
-                <ul className="menu p-4 overflow-y-auto w-52 bg-base-100 text-base-content">
+                <ul className="menu p-4 overflow-y-auto w-56 bg-secondary text-base-content">
                     {/* <!-- Sidebar content here --> */}
                     <li><Link to="/dashboard">My Profile</Link></li>
                     <li><Link to="/dashboard/myorders">My Orders</Link></li>
