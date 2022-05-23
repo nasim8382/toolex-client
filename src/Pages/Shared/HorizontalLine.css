@@ -1,0 +1,14 @@
+.line-bg{
+    width: 100%;
+    height: 2px;
+    background-color: #fdb819;
+    border-radius: 2px;
+}
+
+.line {
+    width: 100px;
+    height: 5px;
+    transform: translateY(-2px);
+    background-color: #fdb819;
+    border-radius: 2px;
+}
