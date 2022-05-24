@@ -3,6 +3,7 @@ import Banner from './Banner';
 import BrandLogo from './BrandLogo';
 import BusinessSummary from './BusinessSummary';
 import FeaturedProducts from './FeaturedProducts';
+import Reviews from './Reviews';
 import Tools from './Tools';
 
 const Home = () => {
@@ -13,6 +14,7 @@ const Home = () => {
             <BusinessSummary></BusinessSummary>
             <FeaturedProducts></FeaturedProducts>
             <BrandLogo></BrandLogo>
+            <Reviews></Reviews>
         </div>
     );
 };

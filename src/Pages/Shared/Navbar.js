@@ -19,7 +19,7 @@ const Navbar = () => {
     const menuItems = (
         <>
           <li><Link to="/home">Home</Link></li>
-          <li><Link to="/purchase">Purchase</Link></li>
+          {/* <li><Link to="/purchase">Purchase</Link></li> */}
           <li><Link to="/dashboard">Dashboard</Link></li>
     
           {/* {

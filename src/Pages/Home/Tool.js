@@ -1,9 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 const Tool = ({ tool }) => {
-  const { name, image, description, minimum_order, available_quantity, price } =
+  const { _id,  name, image, description, minimum_order, available_quantity, price } =
     tool;
+    const navigate = useNavigate();
+
   return (
     <div className="card w-96 bg-base-100 shadow-xl">
       <figure>
@@ -16,9 +18,7 @@ const Tool = ({ tool }) => {
         <h3 className="text-lime-800 font-semibold text-xl">Available Quantity: {available_quantity}</h3>
         <h3 className="text-lime-800 font-semibold text-xl">Product Price: ${price}</h3>
         <div className="card-actions justify-end">
-            <Link to="/purchase">
-                <button className="cursor-pointer rounded-md bg-secondary px-4 py-3 text-center text-sm font-bold uppercase text-gray-700 transition duration-200 ease-in-out hover:bg-primary hover:text-white">Purchase</button>
-            </Link>
+            <button className="cursor-pointer rounded-md bg-secondary px-4 py-3 text-center text-sm font-bold uppercase text-gray-700 transition duration-200 ease-in-out hover:bg-primary hover:text-white" onClick={ () => navigate(`/purchase/${_id}`)}>Purchase</button>
         </div>
       </div>
     </div>

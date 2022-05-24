@@ -12,6 +12,9 @@ const Tools = () => {
     if (isLoading) {
         return <Loading></Loading>
     }
+
+    const threeTools = tools.slice(-6);
+
     return (
         <div className='max-w-7xl mx-auto lg:px-12 mt-20 md:mt-32'>
             <div className='px-4 md:px-5'>
@@ -20,7 +23,7 @@ const Tools = () => {
             </div>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7'>
                 {
-                    tools.map(tool => <Tool
+                    threeTools.map(tool => <Tool
                         key={tool._id}
                         tool={tool}
                     ></Tool>)
