@@ -20,7 +20,7 @@ const SignUp = () => {
       error] =
     useCreateUserWithEmailAndPassword(auth);
 
-//   const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+  const [updateProfile, updating, updateError] = useUpdateProfile(auth);
 
 //   const [token] = useToken(user || gUser);
 
@@ -42,25 +42,17 @@ const SignUp = () => {
     }
   }, [user, gUser, from, navigate]);
 
-  /* if (loading || gLoading || updating) {
-    return <Loading></Loading>;
-  } */
-
-  if (loading || gLoading) {
+  if (loading || gLoading || updating) {
     return <Loading></Loading>;
   }
 
-  /* if (error || gError || updateError) {
+  if (error || gError || updateError) {
     signInError = <p className='text-red-500 mb-2'><small>{error?.message || gError?.message || updateError?.message}</small></p>
- } */
-
-  if (error || gError) {
-    signInError = <p className='text-red-500 mb-2'><small>{error?.message || gError?.message}</small></p>
  }
 
-const onSubmit = async data => {
+    const onSubmit = async data => {
     await createUserWithEmailAndPassword(data.email, data.password);
-    // await updateProfile({ displayName: data.name });
+    await updateProfile({ displayName: data.name });
  }
 
   return (
