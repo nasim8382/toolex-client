@@ -21,6 +21,7 @@ import Footer from './Pages/Shared/Footer';
 import RequireAuth from './Pages/Login/RequireAuth';
 import RequireAdmin from './Pages/Login/RequireAdmin';
 import NotFound from './Pages/NotFound/NotFound';
+import Payment from './Pages/Dashboard/Payment';
 
 function App() {
   return (
@@ -46,6 +47,7 @@ function App() {
           <Route path="manageorders" element={<ManageOrders></ManageOrders>}></Route>
           <Route path="addtool" element={<AddProducts></AddProducts>}></Route>
           <Route path="managetools" element={<ManageProducts></ManageProducts>}></Route>
+          <Route path="payment/:id" element={<Payment></Payment>}></Route>
           <Route path="users" element={
             <RequireAdmin>
               <MakeAdmin></MakeAdmin>

@@ -58,11 +58,8 @@ const AddProducts = () => {
 
   return (
     <div className="container mx-auto">
-      <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 mx-10">
+      <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 mx-auto mt-12">
         <div className="card-body">
-          <h2 className="text-2xl font-bold text-center my-8 text-accent font-saira ">
-            Welcome to your Dashboard !!!
-          </h2>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="form-control w-full max-w-xs">
               <label className="label">

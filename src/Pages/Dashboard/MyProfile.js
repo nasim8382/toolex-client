@@ -49,17 +49,17 @@ const MyProfile = () => {
         toast.success('User Information Updated');
       });
   };
-
+  
   if (isLoading) {
     return <Loading></Loading>;
   }
 
   return (
-    <div>
+    <div className="mt-12">
       <div className="flex gap-6 ">
-        <div class="card w-96 bg-base-100 shadow-xl p-6 ml-6">
-          <div class="">
-            <h2 class="card-title font-saira text-accent text-2xl font-bold text-center">
+        <div className="card w-96 bg-base-100 shadow-xl p-6 ml-6 mx-auto">
+          <div className="">
+            <h2 className="card-title font-saira text-accent text-2xl font-bold text-center">
               Your Information
             </h2>
             <p className="text-lg font-roboto mt-4">
@@ -70,7 +70,7 @@ const MyProfile = () => {
               <span className="text-accent font-bold">Email:</span> {user.email}
             </p>
             {users.map((user) => (
-              <div>
+              <div key={user._id}>
                 <p className="text-lg font-roboto mt-4">
                   <span className="text-accent font-bold">
                     University/College/School Name:
@@ -96,9 +96,9 @@ const MyProfile = () => {
           </div>
         </div>
 
-        <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-          <div class="card-body">
-            <h2 class="card-title font-saira text-accent text-2xl font-bold text-center">
+        <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+          <div className="card-body">
+            <h2 className="card-title font-saira text-accent text-2xl font-bold text-center">
               Add Info
             </h2>
             <form onSubmit={handleSubmit(onSubmit)} className="font-roboto">
