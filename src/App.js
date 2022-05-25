@@ -44,8 +44,8 @@ function App() {
           <Route path="myorders" element={<MyOrders></MyOrders>}></Route>
           <Route path="review" element={<AddReview></AddReview>}></Route>
           <Route path="manageorders" element={<ManageOrders></ManageOrders>}></Route>
-          <Route path="addproduct" element={<AddProducts></AddProducts>}></Route>
-          <Route path="manageproducts" element={<ManageProducts></ManageProducts>}></Route>
+          <Route path="addtool" element={<AddProducts></AddProducts>}></Route>
+          <Route path="managetools" element={<ManageProducts></ManageProducts>}></Route>
           <Route path="users" element={
             <RequireAdmin>
               <MakeAdmin></MakeAdmin>
