@@ -5,9 +5,10 @@ import {
 } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 import { useForm } from "react-hook-form";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Loading from "../Shared/Loading";
-// import useToken from "../../hooks/useToken";
+import useToken from "../../hooks/useToken";
+import bg from '../../images/parallax.jpg';
 
 const Login = () => {
   const [ signInWithGoogle, gUser, gLoading, gError ] = useSignInWithGoogle(auth);
@@ -20,24 +21,16 @@ const Login = () => {
       error] =
     useSignInWithEmailAndPassword(auth);
 
-//   const [token] = useToken(user || gUser);
+  const [token] = useToken(user || gUser);
 
   let signInError;
   const navigate = useNavigate();
-  const location = useLocation();
-  let from = location.state?.from?.pathname || "/";
-
-  /* useEffect(() => {
-    if (token) {
-      navigate(from, { replace: true });
-    }
-  }, [token, from, navigate]); */
 
   useEffect(() => {
-    if (user || gUser) {
-      navigate(from, { replace: true });
+    if (token) {
+      navigate('/dashboard');
     }
-  }, [user, gUser, from, navigate]);
+  }, [token, navigate]);
 
   if (loading || gLoading) {
     return <Loading></Loading>;
@@ -56,23 +49,23 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <div className="flex justify-center items-center h-screen">
-        <div className="card w-96 bg-base-100 shadow-xl">
-          <div className="card-body">
-            <h2 className="text-center uppercase text-2xl font-semibold">
+    <div style={{background: `url(${bg})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundPosition: 'center'}}>
+      <div className="flex justify-end items-center h-screen max-w-7xl mx-auto px-5 md:pr-28 lg:pr-40">
+        <div className="card w-96 bg-secondary shadow-xl">
+          <div className="card-body text-secondary">
+            <h2 className="text-center text-primary uppercase text-2xl font-bold">
               Login
             </h2>
 
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="form-control w-full max-w-xs">
                 <label className="label">
-                  <span className="label-text">Email</span>
+                  <span className="label-text text-primary text-xl font-semibold">Email</span>
                 </label>
                 <input
                   type="email"
                   placeholder="Your Email"
-                  className="input input-bordered w-full max-w-xs"
+                  className="input input-bordered w-full max-w-xs text-xl"
                   {...register("email", {
                     required: {
                       value: true,
@@ -100,12 +93,12 @@ const Login = () => {
 
               <div className="form-control w-full max-w-xs">
                 <label className="label">
-                  <span className="label-text">Password</span>
+                  <span className="label-text text-primary text-xl font-semibold">Password</span>
                 </label>
                 <input
                   type="password"
                   placeholder="Password"
-                  className="input input-bordered w-full max-w-xs"
+                  className="input input-bordered w-full max-w-xs text-xl"
                   {...register("password", {
                     required: {
                       value: true,
@@ -133,24 +126,23 @@ const Login = () => {
 
               {signInError}
               <input
-                className="btn w-full max-w-xs text-white"
+                className="w-full max-w-xs cursor-pointer rounded-md bg-primary px-4 py-3 text-center text-sm font-bold uppercase text-white transition duration-200 ease-in-out hover:bg-lime-700"
                 type="submit"
                 value="Login"
               />
             </form>
 
-            <p>
-              <small>
-                New to Doctors Portal{" "}
-                <Link className="text-secondary" to="/signup">
-                  Create New Account
+            <p className="text-primary font-semibold">
+                New to Toolex ? {" "}
+                <Link className="text-red-600" to="/signup">
+                   Create New Account
                 </Link>
-              </small>
             </p>
-            <div className="divider">OR</div>
+
+            <div className="divider text-red-600">OR</div>
             <button
               onClick={() => signInWithGoogle()}
-              className="btn btn-outline "
+              className="cursor-pointer rounded-md bg-primary px-4 py-3 text-center text-sm font-bold uppercase text-white transition duration-200 ease-in-out hover:bg-lime-700"
             >
               Continue With Google
             </button>

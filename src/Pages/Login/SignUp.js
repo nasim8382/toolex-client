@@ -8,7 +8,8 @@ import auth from "../../firebase.init";
 import { useForm } from "react-hook-form";
 import Loading from "../Shared/Loading";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-// import useToken from "../../hooks/useToken";
+import useToken from "../../hooks/useToken";
+import bg from '../../images/parallax.jpg';
 
 const SignUp = () => {
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
@@ -22,7 +23,7 @@ const SignUp = () => {
 
   const [updateProfile, updating, updateError] = useUpdateProfile(auth);
 
-//   const [token] = useToken(user || gUser);
+  const [token] = useToken(user || gUser);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -30,17 +31,11 @@ const SignUp = () => {
 
   let signInError;
 
- /*  useEffect(() => {
+  useEffect(() => {
     if (token) {
       navigate(from, { replace: true });
     }
-  }, [token, from, navigate]); */
-
-  useEffect(() => {
-    if (user || gUser) {
-      navigate(from, { replace: true });
-    }
-  }, [user, gUser, from, navigate]);
+  }, [token, from, navigate]);
 
   if (loading || gLoading || updating) {
     return <Loading></Loading>;
@@ -53,23 +48,23 @@ const SignUp = () => {
     const onSubmit = async data => {
     await createUserWithEmailAndPassword(data.email, data.password);
     await updateProfile({ displayName: data.name });
- }
+    }
 
   return (
-    <div>
-      <div className="flex h-screen justify-center items-center">
-        <div className="card  flex-shrink-0 w-full max-w-sm bg-base-100 shadow-xl">
-          <div className="card-body">
-            <h2 className="text-center text-2xl font-bold">Sign Up</h2>
+    <div style={{background: `url(${bg})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundPosition: 'center'}}>
+      <div className="flex h-screen justify-end items-center max-w-7xl mx-auto px-5 md:pr-28 lg:pr-40">
+        <div className="card  flex-shrink-0 w-full max-w-sm bg-secondary shadow-xl">
+          <div className="card-body text-secondary">
+            <h2 className="text-center text-primary text-2xl font-bold">Sign Up</h2>
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="form-control w-full max-w-xs">
                 <label className="label">
-                  <span className="label-text">Name</span>
+                  <span className="label-text text-primary text-xl font-semibold">Name</span>
                 </label>
                 <input
                   type="text"
                   placeholder="Your Name"
-                  className="input input-bordered w-full max-w-xs"
+                  className="input input-bordered w-full max-w-xs text-xl"
                   {...register("name", {
                     required: {
                       value: true,
@@ -88,12 +83,12 @@ const SignUp = () => {
 
               <div className="form-control w-full max-w-xs">
                 <label className="label">
-                  <span className="label-text">Email</span>
+                  <span className="label-text text-primary text-xl font-semibold">Email</span>
                 </label>
                 <input
                   type="email"
                   placeholder="Your Email"
-                  className="input input-bordered w-full max-w-xs"
+                  className="input input-bordered w-full max-w-xs text-xl"
                   {...register("email", {
                     required: {
                       value: true,
@@ -120,12 +115,12 @@ const SignUp = () => {
               </div>
               <div className="form-control w-full max-w-xs">
                 <label className="label">
-                  <span className="label-text">Password</span>
+                  <span className="label-text text-primary text-xl font-semibold">Password</span>
                 </label>
                 <input
                   type="password"
                   placeholder="Password"
-                  className="input input-bordered w-full max-w-xs"
+                  className="input input-bordered w-full max-w-xs text-xl"
                   {...register("password", {
                     required: {
                       value: true,
@@ -153,23 +148,21 @@ const SignUp = () => {
 
               {signInError}
               <input
-                className="btn w-full max-w-xs text-white"
+                className="w-full max-w-xs cursor-pointer rounded-md bg-primary px-4 py-3 text-center text-sm font-bold uppercase text-white transition duration-200 ease-in-out hover:bg-lime-700"
                 type="submit"
                 value="Sign Up"
               />
             </form>
-            <p>
-              <small>
+            <p className="text-primary">
                 Already have an account?{" "}
-                <Link className="text-secondary" to="/login">
+                <Link className="text-red-600" to="/login">
                   Please login
                 </Link>
-              </small>
             </p>
-            <div className="divider">OR</div>
+            <div className="divider text-red-600">OR</div>
             <button
               onClick={() => signInWithGoogle()}
-              className="btn btn-outline"
+              className="cursor-pointer rounded-md bg-primary px-4 py-3 text-center text-sm font-bold uppercase text-white transition duration-200 ease-in-out hover:bg-lime-700"
             >
               Continue with Google
             </button>

@@ -19,6 +19,7 @@ import SignUp from './Pages/Login/SignUp';
 import Login from './Pages/Login/Login';
 import Footer from './Pages/Shared/Footer';
 import RequireAuth from './Pages/Login/RequireAuth';
+import RequireAdmin from './Pages/Login/RequireAdmin';
 
 function App() {
   return (
@@ -44,7 +45,11 @@ function App() {
           <Route path="manageorders" element={<ManageOrders></ManageOrders>}></Route>
           <Route path="addproduct" element={<AddProducts></AddProducts>}></Route>
           <Route path="manageproducts" element={<ManageProducts></ManageProducts>}></Route>
-          <Route path="users" element={<MakeAdmin></MakeAdmin>}></Route>
+          <Route path="users" element={
+            <RequireAdmin>
+              <MakeAdmin></MakeAdmin>
+              </RequireAdmin>
+          }></Route>
         </Route>
 
         <Route path="/blogs" element={<Blogs></Blogs>}></Route>
