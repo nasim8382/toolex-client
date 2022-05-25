@@ -13,7 +13,6 @@ const AddProducts = () => {
   const imageStorageKey = "6cd2270b97e4c97d45d2232260b54758";
 
   const onSubmit = (data) => {
-    console.log(data);
     const image = data.image[0];
     const formData = new FormData();
     formData.append("image", image);
@@ -47,10 +46,10 @@ const AddProducts = () => {
             .then((res) => res.json())
             .then((inserted) => {
               if (inserted.insertedId) {
-                toast.success("New Parts added successfully");
+                toast.success("New Tool added successfully");
                 reset();
               } else {
-                toast.error("Failed to add a parts");
+                toast.error("Failed to add a tool");
               }
             });
         }
@@ -59,8 +58,8 @@ const AddProducts = () => {
 
   return (
     <div className="container mx-auto">
-      <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 mx-10">
-        <div class="card-body">
+      <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 mx-10">
+        <div className="card-body">
           <h2 className="text-2xl font-bold text-center my-8 text-accent font-saira ">
             Welcome to your Dashboard !!!
           </h2>
