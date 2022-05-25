@@ -1,9 +1,10 @@
 import React from 'react';
+import error from '../../images/404.gif';
 
 const NotFound = () => {
     return (
-        <div>
-            <h1 className='text-5xl text-center mt-20 font-bold text-secondary'>This is notfound page</h1>
+        <div className='flex h-screen justify-end items-center max-w-7xl px-5 md:px-12'>
+             <img className='block' src={error} alt="" />
         </div>
     );
 };

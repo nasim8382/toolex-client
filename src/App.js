@@ -20,6 +20,7 @@ import Login from './Pages/Login/Login';
 import Footer from './Pages/Shared/Footer';
 import RequireAuth from './Pages/Login/RequireAuth';
 import RequireAdmin from './Pages/Login/RequireAdmin';
+import NotFound from './Pages/NotFound/NotFound';
 
 function App() {
   return (
@@ -56,6 +57,7 @@ function App() {
         <Route path="/portfolio" element={<Portfolio></Portfolio>}></Route>
         <Route path="/signup" element={<SignUp></SignUp>}></Route>
         <Route path="/login" element={<Login></Login>}></Route>
+        <Route path="*" element={<NotFound></NotFound>}></Route>
       </Routes>
       <Footer></Footer>
       <ToastContainer />

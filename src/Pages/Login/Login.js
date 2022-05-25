@@ -5,7 +5,7 @@ import {
 } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Loading from "../Shared/Loading";
 import useToken from "../../hooks/useToken";
 import bg from '../../images/parallax.jpg';
@@ -25,12 +25,14 @@ const Login = () => {
 
   let signInError;
   const navigate = useNavigate();
+  const location = useLocation();
+  let from = location.state?.from?.pathname || "/";
 
   useEffect(() => {
     if (token) {
-      navigate('/dashboard');
+      navigate(from, { replace: true });
     }
-  }, [token, navigate]);
+  }, [token, from, navigate]);
 
   if (loading || gLoading) {
     return <Loading></Loading>;
