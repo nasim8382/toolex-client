@@ -1,102 +1,170 @@
-import axios from "axios";
 import React from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
-import auth from "../../firebase.init";
 
 const AddProducts = () => {
   const {
     register,
     formState: { errors },
     handleSubmit,
+    reset,
   } = useForm();
-  const [user] = useAuthState(auth);
 
-  const onSubmit = (data, event) => {
-    axios.post("http://localhost:5000/review", data).then((res) => {
-      const { data } = res;
-      if (data.insertedId) {
-        toast.success("New Products added successfully");
-        event.target.reset();
-      }
-    });
+  const imageStorageKey = "6cd2270b97e4c97d45d2232260b54758";
+
+  const onSubmit = (data) => {
+    console.log(data);
+    const image = data.image[0];
+    const formData = new FormData();
+    formData.append("image", image);
+    const url = `https://api.imgbb.com/1/upload?key=${imageStorageKey}`;
+    fetch(url, {
+      method: "POST",
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        if (result.success) {
+          const img = result.data.url;
+          const parts = {
+            name: data.name,
+            description: data.description,
+            quantity: "",
+            minimum_order: data.minimum_order,
+            available_quantity: data.available_quantity,
+            price: data.price,
+            image: img,
+          };
+          // send to your database
+          fetch("http://localhost:5000/tool", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+              authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+            },
+            body: JSON.stringify(parts),
+          })
+            .then((res) => res.json())
+            .then((inserted) => {
+              if (inserted.insertedId) {
+                toast.success("New Parts added successfully");
+                reset();
+              } else {
+                toast.error("Failed to add a parts");
+              }
+            });
+        }
+      });
   };
 
   return (
-    <div className="flex justify-center mt-16 max-w-7xl px-5 md:px-12">
-      <div className="card  flex-shrink-0 w-full max-w-sm bg-secondary shadow-xl">
-        <div className="card-body text-primary">
-          <h2 className="text-center text-primary text-2xl font-bold mb-5">
-            Tools Information
+    <div className="container mx-auto">
+      <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 mx-10">
+        <div class="card-body">
+          <h2 className="text-2xl font-bold text-center my-8 text-accent font-saira ">
+            Welcome to your Dashboard !!!
           </h2>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="form-control w-full max-w-xs mb-4">
+            <div className="form-control w-full max-w-xs">
+              <label className="label">
+                <span className="label-text text-accent text-lg font-bold">
+                  Product Name:
+                </span>
+              </label>
               <input
-                type="text"
-                placeholder="Rating"
-                className="input input-bordered w-full max-w-xs text-xl"
-                {...register("rating", {
-                  required: {
-                    value: true,
-                    message: "Rating is Required",
-                  },
+                className="input input-bordered w-full max-w-xs"
+                {...register("name", {
+                  required: true,
                 })}
               />
-              <label className="label">
-                {errors.rating?.type === "required" && (
-                  <span className="label-text-alt text-red-500">
-                    {errors.rating.message}
-                  </span>
-                )}
-              </label>
             </div>
 
-            <div className="form-control w-full max-w-xs mb-4">
+            <div className="form-control w-full max-w-xs">
+              <label className="label">
+                <span className="label-text text-accent text-lg font-bold">
+                  Description:
+                </span>
+              </label>
               <input
-                type="text"
-                placeholder="Description"
-                className="input input-bordered w-full max-w-xs text-xl"
+                className="input input-bordered w-full max-w-xs"
                 {...register("description", {
+                  required: true,
+                })}
+              />
+            </div>
+            <div className="form-control w-full max-w-xs">
+              <label className="label">
+                <span className="label-text text-accent text-lg font-bold">
+                  Minimum Quantity Order:
+                </span>
+              </label>
+              <input
+                className="input input-bordered w-full max-w-xs"
+                {...register("minimum_order", {
                   required: {
                     value: true,
-                    message: "Description is Required",
+                  },
+                })}
+              />
+            </div>
+
+            <div className="form-control w-full max-w-xs">
+              <label className="label">
+                <span className="label-text text-accent text-lg font-bold">
+                  Available Quantity:
+                </span>
+              </label>
+              <input
+                className="input input-bordered w-full max-w-xs"
+                {...register("available_quantity", {
+                  required: {
+                    value: true,
+                  },
+                })}
+              />
+            </div>
+
+            <div className="form-control w-full max-w-xs">
+              <label className="label">
+                <span className="label-text text-accent text-lg font-bold">
+                  Price:
+                </span>
+              </label>
+              <input
+                className="input input-bordered w-full max-w-xs"
+                {...register("price", {
+                  required: {
+                    value: true,
+                  },
+                })}
+              />
+            </div>
+
+            <div className="form-control w-full max-w-xs">
+              <label className="label">
+                <span className="label-text">Image</span>
+              </label>
+              <input
+                type="file"
+                className="input input-bordered w-full max-w-xs pt-[5px]"
+                {...register("image", {
+                  required: {
+                    value: true,
+                    message: "Image is Required",
                   },
                 })}
               />
               <label className="label">
-                {errors.description?.type === "required" && (
+                {errors.name?.type === "required" && (
                   <span className="label-text-alt text-red-500">
-                    {errors.description.message}
+                    {errors.name.message}
                   </span>
                 )}
               </label>
-            </div>
-
-            <div className="form-control w-full max-w-xs mb-7">
-              <input
-                placeholder="Your Name"
-                className="input input-bordered w-full max-w-xs text-xl"
-                type="text"
-                {...register("name", { value: user?.displayName })}
-                readOnly
-                disabled
-              />
-            </div>
-
-            <div className="form-control w-full max-w-xs mb-8">
-              <input
-                placeholder="Your Email"
-                className="input input-bordered w-full max-w-xs text-xl"
-                type="text"
-                {...register("email", { value: user?.email })}
-                readOnly
-                disabled
-              />
             </div>
 
             <input
-              className="w-full max-w-xs cursor-pointer rounded-md bg-primary px-4 py-3 text-center text-sm font-bold uppercase text-white transition duration-200 ease-in-out hover:bg-lime-700"
+              className="btn btn-primary w-full max-w-xs text-base-100 hover:bg-base-100 hover:border-accent hover:text-accent hover:ease-in-out hover:duration-300 mt-4"
               type="submit"
               value="Add"
             />
