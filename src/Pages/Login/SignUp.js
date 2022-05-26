@@ -148,7 +148,7 @@ const SignUp = () => {
 
               {signInError}
               <input
-                className="w-full max-w-xs cursor-pointer rounded-md bg-primary px-4 py-3 text-center text-sm font-bold uppercase text-white transition duration-200 ease-in-out hover:bg-lime-700"
+                className="w-full max-w-xs cursor-pointer rounded-md bg-primary px-4 py-3 text-center text-sm font-bold uppercase text-white transition duration-200 ease-in-out hover:bg-accent"
                 type="submit"
                 value="Sign Up"
               />
@@ -162,7 +162,7 @@ const SignUp = () => {
             <div className="divider text-red-600">OR</div>
             <button
               onClick={() => signInWithGoogle()}
-              className="cursor-pointer rounded-md bg-primary px-4 py-3 text-center text-sm font-bold uppercase text-white transition duration-200 ease-in-out hover:bg-lime-700"
+              className="cursor-pointer rounded-md bg-primary px-4 py-3 text-center text-sm font-bold uppercase text-white transition duration-200 ease-in-out hover:bg-accent"
             >
               Continue with Google
             </button>

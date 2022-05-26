@@ -22,9 +22,9 @@ const ToolsRow = ({ index, tool, setDeletingTools }) => {
         <label
           onClick={() => setDeletingTools(tool)}
           htmlFor="delete-product-modal"
-          className="btn btn-xs btn-error"
+          className="cursor-pointer rounded-md bg-red-500 text-white py-1 px-2 text-center text-sm font-bold uppercase transition duration-200 ease-in-out hover:bg-primary"
         >
-          Delete
+          Remove
         </label>
       </td>
     </tr>

@@ -24,23 +24,20 @@ const ManageOrders = () => {
   
   return (
     <div>
-      <h1 className="font-saira text-accent text-4xl text-center font-bold my-14">
-        All Client Orders: {orders.length}
-      </h1>
+      <h2 className="text-4xl text-center pt-8 pb-5 font-bold text-secondary">All Orders: {orders.length}</h2>
       <div className="overflow-x-auto">
         <table className="table w-full">
           <thead>
             <tr>
-              <th></th>
-              <th>Client Name</th>
-              <th>Client Email</th>
-              <th>Client Number</th>
-              <th>Parts Name</th>
+              <th>No</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Tool Name</th>
               <th>Quantity</th>
               <th>Price</th>
-              <th>Payment Status</th>
-              <th>Order Status</th>
-              <th>Delete Order</th>
+              <th>Payment</th>
+              <th>Status</th>
+              <th>Delete</th>
             </tr>
           </thead>
           <tbody>

@@ -30,12 +30,12 @@ const Purchase = () => {
     const qquantity = parseInt(event.target.value);
     if (qquantity < tools.minimum_order) {
       setError(
-        "You have to purchase product more than our minimum order quantity"
+        "Have to purchase more than minimum order quantity"
       );
       setDisabled(true);
       return;
     } else if (qquantity > tools.available_quantity) {
-      setError("You can't purchase product more than our available quantity");
+      setError("Can't purchase more than available quantity");
       setDisabled(true);
       return;
     } else if (qquantity <= tools.available_quantity && qquantity >= tools.minimum_order) {
@@ -89,37 +89,37 @@ const Purchase = () => {
             <figure>
               <img src={tools.image} alt="Shoes" className="w-80" />
             </figure>
-            <h1 className="text-5xl font-bold mt-4">{tools.name}</h1>
-            <p className="font-roboto text-neutral mt-4 text-justify">
+            <h2 className="text-secondary font-bold text-5xl mt-3">{tools.name}</h2>
+            <p className="text-gray-500 mt-4 text-justify">
               {tools.description}
             </p>
-            <p className="font-roboto text-neutral  mt-2">
-              <span className="font-bold text-accent">
-                Minimum Quantity Order:
+            <h3 className="font-semibold text-xl mt-2">
+              <span className="text-accent">
+                Minimum Order Quantity:
               </span>{" "}
               {tools.minimum_order}
-            </p>
-            <p className="font-roboto text-neutral  mt-2 ">
-              <span className="font-bold text-accent">Available Quantity:</span>{" "}
+            </h3>
+            <h3 className="font-semibold text-xl mt-2 ">
+              <span className="text-accent">Available Quantity:</span>{" "}
               {tools.available_quantity}
-            </p>
-            <p className="font-roboto text-neutral  mt-2">
-              <span className="font-bold text-accent">Price:</span> $
+            </h3>
+            <h3 className="font-semibold text-xl mt-2">
+              <span className="text-accent">Price:</span> $
               {tools.price}
-            </p>
+            </h3>
           </div>
 
-          <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+          <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-secondary">
             <div className="card-body">
               <form onSubmit={handleOrder} className="font-roboto">
                 <div className="form-control w-full max-w-xs">
                   <label className="label">
-                    <span className="label-text text-accent text-lg font-bold">
+                    <span className="label-text text-primary text-xl font-semibold">
                       Name
                     </span>
                   </label>
                   <input
-                    className="input input-bordered w-full max-w-xs"
+                    className="input input-bordered w-full max-w-xs text-xl"
                     disabled
                     name="name"
                     value={user.displayName}
@@ -128,12 +128,12 @@ const Purchase = () => {
 
                 <div className="form-control w-full max-w-xs">
                   <label className="label">
-                    <span className="label-text text-accent text-lg font-bold">
+                    <span className="label-text text-primary text-xl font-semibold">
                       Email
                     </span>
                   </label>
                   <input
-                    className="input input-bordered w-full max-w-xs"
+                    className="input input-bordered w-full max-w-xs text-xl"
                     disabled
                     name="email"
                     value={user.email}
@@ -142,12 +142,12 @@ const Purchase = () => {
 
                 <div className="form-control w-full max-w-xs">
                   <label className="label">
-                    <span className="label-text text-accent text-lg font-bold">
+                    <span className="label-text text-primary text-xl font-semibold">
                       Address
                     </span>
                   </label>
                   <input
-                    className="input input-bordered w-full max-w-xs"
+                    className="input input-bordered w-full max-w-xs text-xl"
                     type="text"
                     name="address"
                   />
@@ -155,12 +155,12 @@ const Purchase = () => {
 
                 <div className="form-control w-full max-w-xs">
                   <label className="label">
-                    <span className="label-text text-accent text-lg font-bold">
+                    <span className="label-text text-primary text-xl font-semibold">
                       Phone Number
                     </span>
                   </label>
                   <input
-                    className="input input-bordered w-full max-w-xs"
+                    className="input input-bordered w-full max-w-xs text-xl"
                     type="text"
                     name="number"
                   />
@@ -168,21 +168,21 @@ const Purchase = () => {
 
                 <div className="form-control w-full max-w-xs flex-row items-center mt-4 ">
                   <label className="label w-full">
-                    <span className="label-text text-accent text-lg font-bold">
+                    <span className="label-text text-primary text-lg font-semibold">
                       Order Quantity:
                     </span>
                   </label>
                   <input
                     onChange={myFunction}
-                    className="input input-bordered w-full max-w-xs"
+                    placeholder={tools.minimum_order}
+                    className="input input-bordered w-full max-w-xs text-xl"
                     type="number"
                     name="quantity"
                   />
                 </div>
-                <p className="text-error mt-2">{error}</p>
+                <p className="text-red-500 mt-2">{error}</p>
                 <button
-                  className="btn btn-primary w-full max-w-xs text-base-100 hover:bg-base-100 hover:border-accent hover:text-accent hover:ease-in-out hover:duration-300 mt-4"
-                  // disabled={error && true}
+                  className="btn btn-primary w-full max-w-xs text-base-100 hover:bg-accent hover:border-accent hover:ease-in-out hover:duration-300 mt-4"
                   disabled={disabled && true}
                 >
                   Purchase

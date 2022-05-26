@@ -15,7 +15,6 @@ const AllOrders = ({ order, index, setDeletingOrder, refetch }) => {
       .then((res) => res.json())
       .then((data) => {
         refetch();
-        console.log(data);
       });
   };
 
@@ -24,21 +23,20 @@ const AllOrders = ({ order, index, setDeletingOrder, refetch }) => {
       <th>{index + 1}</th>
       <td>{userName}</td>
       <td>{email}</td>
-      <td>{number}</td>
       <td>{name}</td>
       <td>{quantity}</td>
       <td>${price}</td>
       <td>
-        {!paid && <button className="btn btn-success btn-xs">Unpaid</button>}
+        {!paid && <button className="cursor-pointer rounded-md bg-rose-300 px-1.5 py-0.5 text-center text-sm uppercase">Unpaid</button>}
       </td>
       <td>
         {paid &&
           (status ? (
-            <button className="btn btn-success btn-xs">Shipped</button>
+            <button className="cursor-pointer rounded-md bg-accent px-1.5 py-0.5 text-center text-sm text-white uppercase">Shipped</button>
           ) : (
             <button
               onClick={() => handleOrderStatus()}
-              className="btn btn-accent btn-xs"
+              className="cursor-pointer rounded-md bg-secondary px-1.5 py-0.5 text-center text-sm font-bold uppercase text-gray-700 transition duration-200 ease-in-out hover:bg-primary hover:text-white"
             >
               Pending
             </button>
@@ -49,9 +47,9 @@ const AllOrders = ({ order, index, setDeletingOrder, refetch }) => {
           <label
             onClick={() => setDeletingOrder(order)}
             htmlFor="delete-confirm-modal"
-            className="btn btn-xs btn-error"
+            className="cursor-pointer rounded-md bg-red-500 text-white px-1.5 py-0.5 text-center text-sm font-bold uppercase transition duration-200 ease-in-out hover:bg-primary"
           >
-            Delete
+            Remove
           </label>
         )}
       </td>

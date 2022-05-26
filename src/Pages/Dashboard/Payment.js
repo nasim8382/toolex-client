@@ -34,14 +34,14 @@ const Payment = () => {
           <img src={order.image} alt="Shoes" className="w-80" />
         </figure>
         <div className="card-body">
-          <h2 className="card-title font-saira text-2xl text-accent">
+          <h2 className="text-secondary font-bold text-4xl">
             {order.name}
           </h2>
-          <p className="font-roboto text-neutral">
-            <span className="font-bold text-accent">Order Quantity:</span>
+          <p className="font-semibold text-xl">
+            <span className="font-bold text-accent">Order Quantity: </span>
             {order.quantity}
           </p>
-          <p className="font-roboto text-neutral">
+          <p className="font-semibold text-xl">
             <span className="font-bold text-accent">Price:</span> ${order.price}
           </p>
         </div>

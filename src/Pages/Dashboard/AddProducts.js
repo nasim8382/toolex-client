@@ -34,7 +34,7 @@ const AddProducts = () => {
             price: data.price,
             image: img,
           };
-          // send to your database
+
           fetch("http://localhost:5000/tool", {
             method: "POST",
             headers: {
@@ -58,17 +58,17 @@ const AddProducts = () => {
 
   return (
     <div className="container mx-auto">
-      <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 mx-auto mt-12">
+      <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-secondary mx-auto mt-12">
         <div className="card-body">
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="form-control w-full max-w-xs">
               <label className="label">
-                <span className="label-text text-accent text-lg font-bold">
-                  Product Name:
+                <span className="label-text text-primary text-xl font-semibold">
+                  Tool Name:
                 </span>
               </label>
               <input
-                className="input input-bordered w-full max-w-xs"
+                className="input input-bordered w-full max-w-xs text-xl"
                 {...register("name", {
                   required: true,
                 })}
@@ -77,12 +77,12 @@ const AddProducts = () => {
 
             <div className="form-control w-full max-w-xs">
               <label className="label">
-                <span className="label-text text-accent text-lg font-bold">
+                <span className="label-text text-primary text-xl font-semibold">
                   Description:
                 </span>
               </label>
               <input
-                className="input input-bordered w-full max-w-xs"
+                className="input input-bordered w-full max-w-xs text-xl"
                 {...register("description", {
                   required: true,
                 })}
@@ -90,12 +90,12 @@ const AddProducts = () => {
             </div>
             <div className="form-control w-full max-w-xs">
               <label className="label">
-                <span className="label-text text-accent text-lg font-bold">
-                  Minimum Quantity Order:
+                <span className="label-text text-primary text-xl font-semibold">
+                  Min Order Quantity:
                 </span>
               </label>
               <input
-                className="input input-bordered w-full max-w-xs"
+                className="input input-bordered w-full max-w-xs text-xl"
                 {...register("minimum_order", {
                   required: {
                     value: true,
@@ -106,12 +106,12 @@ const AddProducts = () => {
 
             <div className="form-control w-full max-w-xs">
               <label className="label">
-                <span className="label-text text-accent text-lg font-bold">
+                <span className="label-text text-primary text-xl font-semibold">
                   Available Quantity:
                 </span>
               </label>
               <input
-                className="input input-bordered w-full max-w-xs"
+                className="input input-bordered w-full max-w-xs text-xl"
                 {...register("available_quantity", {
                   required: {
                     value: true,
@@ -122,12 +122,12 @@ const AddProducts = () => {
 
             <div className="form-control w-full max-w-xs">
               <label className="label">
-                <span className="label-text text-accent text-lg font-bold">
-                  Price:
+                <span className="label-text text-primary text-xl font-semibold">
+                  Tool Price:
                 </span>
               </label>
               <input
-                className="input input-bordered w-full max-w-xs"
+                className="input input-bordered w-full max-w-xs text-xl"
                 {...register("price", {
                   required: {
                     value: true,
@@ -138,7 +138,9 @@ const AddProducts = () => {
 
             <div className="form-control w-full max-w-xs">
               <label className="label">
-                <span className="label-text">Image</span>
+                <span className="label-text text-primary text-xl font-semibold">
+                  Tool Image
+                </span>
               </label>
               <input
                 type="file"
@@ -146,21 +148,13 @@ const AddProducts = () => {
                 {...register("image", {
                   required: {
                     value: true,
-                    message: "Image is Required",
                   },
                 })}
               />
-              <label className="label">
-                {errors.name?.type === "required" && (
-                  <span className="label-text-alt text-red-500">
-                    {errors.name.message}
-                  </span>
-                )}
-              </label>
             </div>
 
             <input
-              className="btn btn-primary w-full max-w-xs text-base-100 hover:bg-base-100 hover:border-accent hover:text-accent hover:ease-in-out hover:duration-300 mt-4"
+              className="w-full max-w-xs cursor-pointer rounded-md bg-primary px-4 py-3 text-center text-sm font-bold uppercase text-white transition duration-200 ease-in-out hover:bg-accent mt-4"
               type="submit"
               value="Add"
             />

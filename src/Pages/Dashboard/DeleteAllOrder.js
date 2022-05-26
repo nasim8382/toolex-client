@@ -27,10 +27,10 @@ const DeleteAllOrder = ({ deletingOrder, setDeletingOrder, refetch }) => {
             Are you sure you want to delete this order?
           </h3>
           <div className="modal-action">
-            <button onClick={() => handleDelete()} className="btn btn-xs btn-error">
+            <button onClick={() => handleDelete()} className="cursor-pointer rounded-md bg-red-500 px-4 py-1 text-center text-sm font-bold uppercase text-white transition duration-200 ease-in-out hover:bg-primary">
               Delete
             </button>
-            <label htmlFor="delete-confirm-modal" className="btn btn-xs">
+            <label htmlFor="delete-confirm-modal" className="cursor-pointer rounded-md bg-secondary px-4 py-1 text-center text-sm font-bold uppercase text-primary transition duration-200 ease-in-out hover:bg-accent hover:text-white">
               Cancel
             </label>
           </div>

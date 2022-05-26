@@ -14,10 +14,10 @@ const Dashboard = () => {
         <div className="drawer drawer-mobile mt-8">
             <input id="dashboard-sidebar" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content">
-                <h2 className='text-3xl md:text-5xl text-center mt-3 font-bold text-lime-700'>Welcome to your Dashboard</h2>
+                <h2 className='text-3xl md:text-5xl text-center mt-3 font-bold text-accent'>Welcome to your Dashboard</h2>
                 <Outlet></Outlet>
             </div>
-            <div className="drawer-side">
+            <div className="drawer-side mt-20">
                 <label htmlFor="dashboard-sidebar" className="drawer-overlay"></label>
                 <ul className="menu p-4 overflow-y-auto w-56 bg-secondary text-base-content">
                     {/* <!-- Sidebar content here --> */}

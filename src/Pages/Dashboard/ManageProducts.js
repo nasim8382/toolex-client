@@ -24,20 +24,18 @@ const ManageProducts = () => {
 
   return (
     <div>
-      <h2 className="text-2xl font-bold text-center my-8 text-accent">
-        All The Tools
-      </h2>
-      <div className="overflow-x-auto">
+      <h2 className="text-4xl text-center pt-8 pb-5 font-bold text-secondary">All Tools: {tools.length}</h2>
+      <div className="overflow-x-auto lg:px-3">
         <table className="table w-full">
           <thead>
             <tr>
-              <th>No</th>
-              <th>Image</th>
-              <th>Name</th>
-              <th>Minimum Quantity</th>
-              <th>Available Quantity</th>
-              <th>Price</th>
-              <th>Delete Product</th>
+              <th className='text-base'>No</th>
+              <th className='text-base'>Image</th>
+              <th className='text-base'>Name</th>
+              <th className='text-base'>Min Order</th>
+              <th className='text-base'>Stock</th>
+              <th className='text-base'>Price</th>
+              <th className='text-base'>Delete</th>
             </tr>
           </thead>
           <tbody>

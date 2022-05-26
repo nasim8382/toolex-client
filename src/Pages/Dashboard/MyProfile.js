@@ -11,6 +11,7 @@ const MyProfile = () => {
   const [isReload, setIsReload] = useState(false);
   const {
     register,
+    formState: { errors },
     handleSubmit,
     reset,
   } = useForm();
@@ -55,39 +56,39 @@ const MyProfile = () => {
   }
 
   return (
-    <div className="mt-12">
-      <div className="flex gap-6 ">
-        <div className="card w-96 bg-base-100 shadow-xl p-6 ml-6 mx-auto">
+    <div className="mt-12 lg:pl-12">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mx-auto">
+        <div className="card w:72 md:w-96 bg-primary shadow-xl p-6">
           <div className="">
-            <h2 className="card-title font-saira text-accent text-2xl font-bold text-center">
-              Your Information
-            </h2>
-            <p className="text-lg font-roboto mt-4">
-              <span className="text-accent font-bold">Name:</span>{" "}
+          <h2 className="text-secondary text-3xl font-bold my-7">
+            Updated
+          </h2>
+            <p className="text-secondary  text-lg font-roboto mt-4">
+              <span className="font-bold">Name:</span>{" "}
               {user.displayName}
             </p>
-            <p className="text-lg font-roboto mt-4">
-              <span className="text-accent font-bold">Email:</span> {user.email}
+            <p className="text-secondary text-lg mt-4">
+              <span className="font-bold">Email:</span> {user.email}
             </p>
             {users.map((user) => (
               <div key={user._id}>
-                <p className="text-lg font-roboto mt-4">
-                  <span className="text-accent font-bold">
-                    University/College/School Name:
+                <p className="text-secondary  text-lg mt-4">
+                  <span className="font-bold">
+                    Educational Institute:
                   </span>{" "}
                   {user.education}
                 </p>
-                <p className="text-lg font-roboto mt-4">
-                  <span className="text-accent font-bold">Address:</span>{" "}
+                <p className="text-secondary  text-lg mt-4">
+                  <span className="font-bold">Address:</span>{" "}
                   {user.address}
                 </p>
-                <p className="text-lg font-roboto mt-4">
-                  <span className="text-accent font-bold">Phone Number:</span>{" "}
+                <p className="text-secondary  text-lg mt-4">
+                  <span className="font-bold">Phone Number:</span>{" "}
                   {user.number}
                 </p>
-                <p className="text-lg font-roboto mt-4">
-                  <span className="text-accent font-bold">
-                    Linked Profile Link:
+                <p className="text-secondary  text-lg  mt-4">
+                  <span className="font-bold">
+                    LinkedIn Link:
                   </span>
                   {user.linkedin}
                 </p>
@@ -96,20 +97,18 @@ const MyProfile = () => {
           </div>
         </div>
 
-        <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+        <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-secondary">
           <div className="card-body">
-            <h2 className="card-title font-saira text-accent text-2xl font-bold text-center">
-              Add Info
-            </h2>
             <form onSubmit={handleSubmit(onSubmit)} className="font-roboto">
+            <h2 className="text-center text-primary text-2xl font-bold">
+            Update Info
+          </h2>
               <div className="form-control w-full max-w-xs">
-                <label className="label">
-                  <span className="label-text text-accent text-lg font-bold">
-                    Name
-                  </span>
-                </label>
                 <input
-                  className="input input-bordered w-full max-w-xs"
+                  type="text"
+                  placeholder="Your Name"
+                  className="input input-bordered w-full max-w-xs text-xl mt-5 mb-4"
+                  readOnly
                   disabled
                   value={user.displayName}
                   {...register("name", {
@@ -120,13 +119,11 @@ const MyProfile = () => {
               </div>
 
               <div className="form-control w-full max-w-xs">
-                <label className="label">
-                  <span className="label-text text-accent text-lg font-bold">
-                    Email
-                  </span>
-                </label>
                 <input
-                  className="input input-bordered w-full max-w-xs"
+                  type="email"
+                  placeholder="Your Email"
+                  className="input input-bordered w-full max-w-xs text-xl my-4"
+                  readOnly
                   disabled
                   value={user.email}
                   {...register("email", {
@@ -136,71 +133,91 @@ const MyProfile = () => {
                 />
               </div>
               <div className="form-control w-full max-w-xs">
-                <label className="label">
-                  <span className="label-text text-accent text-lg font-bold">
-                    University/College/School Name
-                  </span>
-                </label>
                 <input
-                  className="input input-bordered w-full max-w-xs"
+                  type="text"
+                  placeholder="Educational Institute"
+                  className="input input-bordered w-full max-w-xs text-xl mt-4"
                   {...register("education", {
                     required: {
                       value: true,
+                      message: "Education  is Required",
                     },
                   })}
                 />
+                <label className="label">
+                {errors.education?.type === "required" && (
+                  <span className="label-text-alt text-red-500">
+                    {errors.education.message}
+                  </span>
+                )}
+              </label>
               </div>
 
               <div className="form-control w-full max-w-xs">
-                <label className="label">
-                  <span className="label-text text-accent text-lg font-bold">
-                    Address
-                  </span>
-                </label>
                 <input
-                  className="input input-bordered w-full max-w-xs"
+                  type="text"
+                  placeholder="Your Address"
+                  className="input input-bordered w-full max-w-xs text-xl mt-4"
                   {...register("address", {
                     required: {
                       value: true,
+                      message: "Address is Required",
                     },
                   })}
                 />
+                <label className="label">
+                {errors.address?.type === "required" && (
+                  <span className="label-text-alt text-red-500">
+                    {errors.address.message}
+                  </span>
+                )}
+              </label>
               </div>
 
               <div className="form-control w-full max-w-xs">
-                <label className="label">
-                  <span className="label-text text-accent text-lg font-bold">
-                    Phone Number
-                  </span>
-                </label>
                 <input
-                  className="input input-bordered w-full max-w-xs"
+                  type="text"
+                  placeholder="Phone Number"
+                  className="input input-bordered w-full max-w-xs text-xl mt-4"
                   {...register("number", {
                     required: {
                       value: true,
+                      message: "Number is Required",
                     },
                   })}
                 />
+                <label className="label">
+                {errors.number?.type === "required" && (
+                  <span className="label-text-alt text-red-500">
+                    {errors.number.message}
+                  </span>
+                )}
+              </label>
               </div>
 
               <div className="form-control w-full max-w-xs">
-                <label className="label">
-                  <span className="label-text text-accent text-lg font-bold">
-                    Linked Profile Link
-                  </span>
-                </label>
                 <input
-                  className="input input-bordered w-full max-w-xs"
+                  type="text"
+                  placeholder="LinkedIn Profile Link"
+                  className="input input-bordered w-full max-w-xs text-xl mt-4"
                   {...register("linkedin", {
                     required: {
                       value: true,
+                      message: "Link is Required",
                     },
                   })}
                 />
+                <label className="label">
+                {errors.linkedin?.type === "required" && (
+                  <span className="label-text-alt text-red-500">
+                    {errors.linkedin.message}
+                  </span>
+                )}
+              </label>
               </div>
 
               <input
-                className="btn btn-primary w-full max-w-xs text-base-100 hover:bg-base-100 hover:border-accent hover:text-accent hover:ease-in-out hover:duration-300 mt-4"
+                className="w-full max-w-xs cursor-pointer rounded-md bg-primary px-4 py-3 text-center text-sm font-bold uppercase text-white transition duration-200 ease-in-out hover:bg-accent mt-5"
                 type="submit"
                 value="Add"
               />

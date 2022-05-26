@@ -88,7 +88,7 @@ const AddReview = () => {
               <input
                 placeholder="Your Email"
                 className="input input-bordered w-full max-w-xs text-xl"
-                type="text"
+                type="email"
                 {...register("email", { value: user?.email })}
                 readOnly
                 disabled
@@ -96,7 +96,7 @@ const AddReview = () => {
             </div>
 
             <input
-              className="w-full max-w-xs cursor-pointer rounded-md bg-primary px-4 py-3 text-center text-sm font-bold uppercase text-white transition duration-200 ease-in-out hover:bg-lime-700"
+              className="w-full max-w-xs cursor-pointer rounded-md bg-primary px-4 py-3 text-center text-sm font-bold uppercase text-white transition duration-200 ease-in-out hover:bg-accent"
               type="submit"
               value="Add"
             />

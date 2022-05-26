@@ -9,7 +9,7 @@ module.exports = {
         toolextheme: {
           primary: "#172B34",
           secondary: "#fdb819",
-          accent: "#37cdbe",
+          accent: "#228c0d",
           neutral: "#3d4451",
           "base-100": "#ffffff",
         },

@@ -119,11 +119,11 @@ const CheckoutForm = ({ order }) => {
       </form>
       {cardError && <p className="text-red-500">{cardError}</p>}
       {success && (
-        <div className="text-green-500">
+        <div className="text-accent">
           <p>{success} </p>
           <p>
             Your transaction Id:{" "}
-            <span className="text-orange-500 font-bold">{transactionId}</span>{" "}
+            <span className="text-secondary font-bold">{transactionId}</span>{" "}
           </p>
         </div>
       )}

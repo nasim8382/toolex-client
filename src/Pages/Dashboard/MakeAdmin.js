@@ -22,9 +22,9 @@ const MakeAdmin = () => {
                 <table className="table w-full">
                     <thead>
                         <tr>
-                            <th className='text-primary text-xl text-semibold'>No</th>
-                            <th className='text-primary text-xl text-semibold'>Email</th>
-                            <th className='text-primary text-xl text-semibold'>Role</th>
+                            <th className='text-xl text-semibold'>No</th>
+                            <th className='text-xl text-semibold'>Email</th>
+                            <th className='text-xl text-semibold'>Role</th>
                         </tr>
                     </thead>
                     <tbody>

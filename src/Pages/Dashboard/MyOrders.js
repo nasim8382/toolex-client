@@ -29,16 +29,16 @@ const MyOrders = () => {
   }
 
   return (
-    <div>
+    <div className="mt-12 md:px-5">
       <div className="overflow-x-auto">
         <table className="table w-full font-roboto">
           <thead>
             <tr>
-              <th></th>
-              <th>Parts Name</th>
-              <th>Price</th>
-              <th>Quantity</th>
-              <th>Payment</th>
+              <th className='text-primary text-lg text-semibold'>No</th>
+              <th className='text-primary text-lg text-semibold'>Name</th>
+              <th className='text-primary text-lg text-semibold'>Price</th>
+              <th className='text-primary text-lg text-semibold'>Quantity</th>
+              <th className='text-primary text-lg text-semibold'>Payment</th>
             </tr>
           </thead>
           {orders.map((order, index) => (
@@ -52,14 +52,14 @@ const MyOrders = () => {
                   {order.price && !order.paid && (
                     <div>
                       <Link to={`/dashboard/payment/${order._id}`}>
-                        <button className="btn btn-xs btn-access">Pay</button>
+                        <button className="cursor-pointer rounded-md bg-secondary py-1 px-2 text-center text-sm font-bold uppercase text-gray-700 transition duration-200 ease-in-out hover:bg-primary hover:text-white mr-3">Pay</button>
                       </Link>
                       <label
                         htmlFor="delete-modal"
-                        className="btn btn-xs btn-accent"
+                        className="cursor-pointer rounded-md bg-red-500 text-white py-1 px-2 text-center text-sm font-bold uppercase transition duration-200 ease-in-out hover:bg-primary"
                         onClick={() => setDeleteOrder(order._id)}
                       >
-                        Delete
+                        Cancel
                       </label>
                       {deleteOrder && (
                         <DeleteOrder
@@ -73,11 +73,11 @@ const MyOrders = () => {
                   {order.price && order.paid && (
                     <div>
                       <p>
-                        <span className="text-success">Paid</span>
+                        <span className="text-accent">Paid</span>
                       </p>
                       <p>
                         Transaction id:{" "}
-                        <span className="text-success">
+                        <span className="text-accent">
                           {order.transactionId}
                         </span>
                       </p>
