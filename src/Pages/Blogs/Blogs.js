@@ -2,11 +2,11 @@ import React from "react";
 
 const Blogs = () => {
   return (
-    <div className="max-w-7xl mx-auto px-12 mt-16">
+    <div className="max-w-7xl mx-auto px-5 md:px-12 mt-10 md:mt-16">
         <h2 className='text-3xl md:text-5xl text-center mt-3 font-bold text-accent'>Our Blogs</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-12">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-6 md:mt-12">
 
-        <div className="shadow-lg card p-5">
+        <div className="shadow-lg card p-7">
             <h1 className="text-secondary font-bold text-xl mb-3">
                 <span className="text-accent">Question-1: </span> How will you
                 improve the performance of a React Application?
@@ -27,7 +27,7 @@ const Blogs = () => {
             <p>10. Using a Content Delivery Network</p>
         </div>
         
-        <div className="shadow-lg card p-5">
+        <div className="shadow-lg card p-7">
             <h1 className="text-secondary font-bold text-xl mb-3">
                 <span className="text-accent">Question-2: </span> What are the
             different ways to manage a state in a React application?
@@ -43,7 +43,7 @@ const Blogs = () => {
             </p>
         </div>
 
-        <div className="shadow-lg card p-5">
+        <div className="shadow-lg card p-7">
             <h1 className="text-secondary font-bold text-xl mb-3">
                 <span className="text-accent">Question-3: </span> How does
             prototypical inheritance work?
@@ -55,7 +55,7 @@ const Blogs = () => {
             </p>
         </div>
 
-        <div className="shadow-lg card p-5">
+        <div className="shadow-lg card p-7">
             <h1 className="text-secondary font-bold text-xl mb-3">
                 <span className="text-accent">Question-4: </span> What is a unit test? Why should write unit tests?
             </h1>
@@ -64,7 +64,7 @@ const Blogs = () => {
             </p>
         </div>
 
-        <div className="shadow-lg card p-5">
+        <div className="shadow-lg card p-7">
             <h1 className="text-secondary font-bold text-xl mb-3">
                 <span className="text-accent">Question-5: </span> Why you do not set the state directly in React. For example, if you have const[products, setProducts] = useState([]). Why you do not set products = [...] instead, you use the setProducts
             </h1>
@@ -74,7 +74,7 @@ const Blogs = () => {
             </p>
         </div>
 
-        <div className="shadow-lg card p-5">
+        <div className="shadow-lg card p-7">
             <h1 className="text-secondary font-bold text-xl mb-3">
                 <span className="text-accent">Question-6: </span> You have an array
             of products. Each object has a name, price, description, etc. How
