@@ -14,7 +14,7 @@ const AddReview = () => {
   const [user] = useAuthState(auth);
 
   const onSubmit = (data, event) => {
-    axios.post("http://localhost:5000/review", data).then((res) => {
+    axios.post("https://young-waters-24686.herokuapp.com/review", data).then((res) => {
       const { data } = res;
       if (data.insertedId) {
         toast.success("New Products added successfully");

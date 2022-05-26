@@ -21,7 +21,7 @@ const Purchase = () => {
   const [disabled, setDisabled] = useState(false);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/tool/${id}`)
+    fetch(`https://young-waters-24686.herokuapp.com/tool/${id}`)
       .then((res) => res.json())
       .then((data) => setTools(data));
   }, [isReload]);
@@ -61,7 +61,7 @@ const Purchase = () => {
       address: address,
     };
 
-    fetch(`http://localhost:5000/orders`, {
+    fetch(`https://young-waters-24686.herokuapp.com/orders`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

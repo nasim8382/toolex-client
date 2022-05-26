@@ -10,7 +10,7 @@ const DeleteOrder = ({ deleteOrder, refetch }) => {
 
   useEffect(() => {
     const email = user.email;
-    fetch(`http://localhost:5000/orders?email=${email}`, {
+    fetch(`https://young-waters-24686.herokuapp.com/orders?email=${email}`, {
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
@@ -22,7 +22,7 @@ const DeleteOrder = ({ deleteOrder, refetch }) => {
   }, [user, navigate]);
 
   const handleDelete = (id) => {
-    fetch(`http://localhost:5000/orders/${id}`, {
+    fetch(`https://young-waters-24686.herokuapp.com/orders/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

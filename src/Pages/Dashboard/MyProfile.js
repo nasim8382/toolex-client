@@ -22,7 +22,7 @@ const MyProfile = () => {
     isLoading,
     refetch,
   } = useQuery("users", () =>
-    fetch(`http://localhost:5000/users?email=${email}`, {
+    fetch(`https://young-waters-24686.herokuapp.com/users?email=${email}`, {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -34,7 +34,7 @@ const MyProfile = () => {
     console.log(data);
     const email = user.email;
 
-    fetch(`http://localhost:5000/user/${email}`, {
+    fetch(`https://young-waters-24686.herokuapp.com/user/${email}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

@@ -6,7 +6,7 @@ import Loading from '../Shared/Loading';
 import Review from './Review';
 
 const Reviews = () => {
-    const { data: reviews, isLoading } = useQuery('reviews', () => axios('http://localhost:5000/review')
+    const { data: reviews, isLoading } = useQuery('reviews', () => axios('https://young-waters-24686.herokuapp.com/review')
         .then(data => data.data));
 
     if (isLoading) {

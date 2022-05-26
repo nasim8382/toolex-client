@@ -6,7 +6,7 @@ import axios from 'axios';
 import Tool from './Tool';
 
 const Tools = () => {
-    const { data: tools, isLoading } = useQuery('tools', () => axios('http://localhost:5000/tool')
+    const { data: tools, isLoading } = useQuery('tools', () => axios('https://young-waters-24686.herokuapp.com/tool')
         .then(data => data.data));
 
     if (isLoading) {

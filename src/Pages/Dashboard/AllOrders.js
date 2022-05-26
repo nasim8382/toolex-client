@@ -5,7 +5,7 @@ const AllOrders = ({ order, index, setDeletingOrder, refetch }) => {
     order;
 
   const handleOrderStatus = () => {
-    fetch(`http://localhost:5000/allorders/${_id}`, {
+    fetch(`https://young-waters-24686.herokuapp.com/allorders/${_id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
